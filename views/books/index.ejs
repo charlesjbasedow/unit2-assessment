@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= title %></title>
+    </head>
+  <body>
+    <h1>Book List</h1>
+    <a href="/books/new">Add a new book</a>
+    <% if (books.length) { %>
+      <% books.forEach(function(book) { %>
+            <ul>
+              <li><%= book.title %>-<%= book.read ? "read" : "Not read" %>
+                <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
+                  <button type="submit">Delete</button></form>
+                </li>
+              </ul>
+          <% }) %>
+    <% } else { %>
+      <h2>There are no books yet</h2>
+    <% } %>
+  </body>
+
+</html>
